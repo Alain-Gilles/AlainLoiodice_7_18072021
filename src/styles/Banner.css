@@ -1,0 +1,47 @@
+.ban-banner {
+  color: orangered;
+  background-color: black;
+  text-align: right;
+  padding: 10px;
+  border-bottom: solid 3px orangered;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ban-groupe-logo {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.ban-logo {
+  height: 10vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ban-logo {
+    animation: ban-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes ban-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.ban-title {
+  padding-left: 2vmin;
+  margin-bottom: 15px;
+  font-size: calc(20px + 2vmin);
+}
+
+.ban-soustitre {
+  font-size: calc(8px + 2vmin);
+  margin-left: 35px;
+}
