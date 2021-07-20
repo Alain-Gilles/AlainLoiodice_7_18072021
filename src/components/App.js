@@ -1,6 +1,7 @@
 import Banner from "./Banner";
 import logo from "../assets/logo5.png";
 import SignupForm from "./SignupForm";
+import About from "./About";
 
 import React, { Fragment } from "react";
 import {
@@ -12,13 +13,14 @@ import {
 } from "react-router-dom";
 
 function App() {
-  const name = "John Doe";
+  const name = "John Doe !";
+  const trtOk = false;
   const isAuthenticated = true;
   return (
     <div>
       <Banner>
         <div className="ban-groupe-logo">
-          <img className="ban-logo" src={logo} alt="La maison jungle" />
+          <img className="ban-logo" src={logo} alt="Groupomania" />
           <h1 className="ban-title">Groupomania</h1>
         </div>
         <h2 className="ban-soustitre">Votre réseau social d'entreprise</h2>
@@ -44,7 +46,7 @@ function App() {
           <Route path="/" exact component={SignupForm} />
           {isAuthenticated ? (
             <>
-              <Route path="/about/:name" component={About} />
+              <Route path="/about/:name" component={About1} />
               <Route path="/contact" component={Contact} />
             </>
           ) : (
@@ -64,17 +66,17 @@ function App() {
 //   </Fragment>
 // );
 // About Page
-const About = ({
-  match: {
-    params: { name },
-  },
-}) => (
-  <Fragment>
-    {name !== "John Doe" ? <Redirect to="/" /> : null}
-    <h1>About {name} </h1>
-    <FakeText />
-  </Fragment>
-);
+// const About = ({
+//   match: {
+//     params: { name },
+//   },
+// }) => (
+//   <Fragment>
+//     {name !== "John Doe" ? <Redirect to="/" /> : null}
+//     <h1>About {name} </h1>
+//     <FakeText />
+//   </Fragment>
+// );
 // Contact Page
 const Contact = ({ history }) => (
   <Fragment>
@@ -93,5 +95,11 @@ const FakeText = () => (
     non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
   </p>
 );
+
+const About1 = ({
+  match: {
+    params: { name },
+  },
+}) => About(name);
 
 export default App;

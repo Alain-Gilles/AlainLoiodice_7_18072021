@@ -68,3 +68,12 @@ form {
   color: black;
   font-size: calc(8px + 2vmin);
 }
+
+.creatProfilErr {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: black;
+  font-size: calc(8px + 2vmin);
+}
