@@ -2,6 +2,7 @@ import Banner from "./Banner";
 import logo from "../assets/logo5.png";
 import SignupForm from "./SignupForm";
 import About from "./About";
+import LoginForm from "./LoginForm";
 
 import React, { Fragment } from "react";
 import {
@@ -16,6 +17,7 @@ function App() {
   const name = "John Doe !";
   const trtOk = false;
   const isAuthenticated = true;
+
   return (
     <div>
       <Banner>
@@ -33,6 +35,9 @@ function App() {
                 <Link to="/">Signup</Link>
               </li>
               <li>
+                <Link to="/login">Login</Link>
+              </li>
+              <li>
                 <Link to={`/about/${name}`}>About</Link>
               </li>
               <li>
@@ -44,6 +49,7 @@ function App() {
         </div>
         <Switch>
           <Route path="/" exact component={SignupForm} />
+          <Route path="/login" component={LoginForm} />
           {isAuthenticated ? (
             <>
               <Route path="/about/:name" component={About1} />

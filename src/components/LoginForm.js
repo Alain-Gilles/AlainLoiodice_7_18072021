@@ -1,27 +1,78 @@
 import "../styles/LoginForm.css";
 import React from "react";
+import AxLogin from "../services/AxLogin";
+import LocSto from "../services/LocSto";
 
 function LoginForm(props) {
-  const nameEl = React.useRef(null);
+  const pseudoEl = React.useRef(null);
   const passwordEl = React.useRef(null);
-  const rememberMeEl = React.useRef(null);
+  const emailEl = React.useRef(null);
+  const [errMessage, setErrMessage] = React.useState("");
 
   let trtValid = false;
+  let ctrlOk = true;
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = {
-      username: nameEl.current.value,
+      pseudo: pseudoEl.current.value,
       password: passwordEl.current.value,
-      rememberMe: rememberMeEl.current.checked,
+      email: emailEl.current.value,
     };
-    if (!formData.username.includes("@")) {
-      alert(
-        "Attention, il n'y a pas d'@, dans votre username " + formData.username
-      );
+    setErrMessage("");
+    if (formData.pseudo == "" && formData.email == "") {
+      //alert("Vous devez saisir un pseudo ou un email");
+      setErrMessage("Vous devez saisir un pseudo ou un email");
+      ctrlOk = false;
+      return;
     }
-    console.log(formData);
+    if (!formData.pseudo == "" && !formData.email == "") {
+      //alert("Vous devez saisir soit un pseudo soit un email");
+      setErrMessage("Vous devez saisir soit un pseudo soit un email");
+      ctrlOk = false;
+      return;
+    }
+    if (!formData.email == "") {
+      if (!formData.email.includes("@")) {
+        // alert(
+        //   "Attention, il n'y a pas d'@, dans votre email " + formData.email
+        // );
+        setErrMessage(
+          "Attention, il n'y a pas d'@, dans votre email " + formData.email
+        );
+        ctrlOk = false;
+        return;
+      }
+    }
+    if (formData.password === "") {
+      // alert("Vous devez saisir un mot de passe");
+      setErrMessage("Vous devez saisir un mot de passe");
+      ctrlOk = false;
+      return;
+    }
+    if (ctrlOk) {
+      AxLogin(formData)
+        .then(function (response) {
+          console.log(response);
+          console.log(JSON.stringify(response.data));
+          //
+          // Mise à jour de l'id et du token dans local storage ?
+          //
+          console.log("response.data ", response.data);
+          console.log("response.data.userId ", response.data.userId);
+          console.log("response.data.userId ", response.data.userId);
+          LocSto(response.data.userId, response.data.token);
+          //window.location.href = "/contact";
+        })
+        .catch(function (error) {
+          const errorData = error && error.response && error.response.data;
+
+          console.log(errorData);
+          setErrMessage(errorData.message);
+        });
+    }
   };
+
   if (trtValid)
     return (
       <div>
@@ -31,18 +82,18 @@ function LoginForm(props) {
   return (
     <div>
       <div className="creatProfil">
-        <h2 className="creatProfilTitre">Création d'un profil utilisateur</h2>
+        <h2 className="creatProfilTitre">Connexion d'un utilisateur</h2>
       </div>
       <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="username" ref={nameEl} />
+        <input type="text" placeholder="pseudo" ref={pseudoEl} />
+        <input type="text" placeholder="email" ref={emailEl} />
         <input type="password" placeholder="password" ref={passwordEl} />
-        <label>
-          <input type="checkbox" ref={rememberMeEl} />
-          Remember me
-        </label>
         <button type="submit" className="myButton">
           Login
         </button>
+        <div>
+          <p>{errMessage}</p>
+        </div>
       </form>
     </div>
   );

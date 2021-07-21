@@ -1,18 +1,17 @@
 import "../styles/SignupForm.css";
 import React from "react";
 //import axios from "axios";
-import AxSignup from "./AxSignup";
+import AxSignup from "../services/AxSignup";
 
 function SignupForm(props) {
   const nameEl = React.useRef(null);
   const passwordEl = React.useRef(null);
   const pseudoEl = React.useRef(null);
   const emailEl = React.useRef(null);
+  const [errMessage, setErrMessage] = React.useState("");
 
   let trtValid = false;
   let ctrlOk = true;
-  let retour = {};
-  let messerreur = "***********message************";
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,10 +25,20 @@ function SignupForm(props) {
       alert("Attention, il n'y a pas d'@, dans votre email " + formData.email);
       ctrlOk = false;
     }
-    console.log("1", formData);
 
     if (ctrlOk) {
-      AxSignup(formData);
+      AxSignup(formData)
+        .then(function (response) {
+          console.log(response);
+          console.log(JSON.stringify(response.data));
+          window.location.href = "/login";
+        })
+        .catch(function (error) {
+          const errorData = error && error.response && error.response.data;
+
+          console.log(errorData);
+          setErrMessage(errorData.message);
+        });
     }
     //
     //
@@ -65,7 +74,7 @@ function SignupForm(props) {
         </button>
       </form>
       <div>
-        <h2 className="creatProfilErr">{messerreur}</h2>
+        <h2 className="creatProfilErr">{errMessage}</h2>
       </div>
     </div>
   );
