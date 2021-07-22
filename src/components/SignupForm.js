@@ -2,6 +2,8 @@ import "../styles/SignupForm.css";
 import React from "react";
 //import axios from "axios";
 import AxSignup from "../services/AxSignup";
+import ValidMotPass from "../services/ValidMotPass";
+import ValidEmail from "../services/ValidEmail";
 
 function SignupForm(props) {
   const nameEl = React.useRef(null);
@@ -21,9 +23,49 @@ function SignupForm(props) {
       pseudo: pseudoEl.current.value,
       email: emailEl.current.value,
     };
-    if (!formData.email.includes("@")) {
-      alert("Attention, il n'y a pas d'@, dans votre email " + formData.email);
+    setErrMessage("");
+    if (formData.username == "") {
+      setErrMessage("Veuillez saisir votre username");
       ctrlOk = false;
+      return;
+    }
+    if (formData.password == "") {
+      setErrMessage("Veuillez saisir un mot de passe");
+      ctrlOk = false;
+      return;
+    }
+    let objretour = {
+      errmess: "",
+      trtOk: false,
+    };
+    ValidMotPass(formData.password, objretour);
+    if (!objretour.trtOk) {
+      setErrMessage(objretour.errmess);
+      return;
+    }
+
+    if (formData.pseudo == "") {
+      setErrMessage("Vous n'avez pas entré de pseudo");
+      ctrlOk = false;
+      return;
+    }
+    if (formData.email == "") {
+      setErrMessage("Vous n'avez pas entré votre email");
+      ctrlOk = false;
+      return;
+    }
+    if (!formData.email.includes("@")) {
+      //alert("Attention, il n'y a pas d'@, dans votre email " + formData.email);
+      setErrMessage(
+        "Attention, il n'y a pas d'@, dans votre email " + formData.email
+      );
+      ctrlOk = false;
+      return;
+    }
+    if (!ValidEmail(formData.email)) {
+      setErrMessage("Veuillez saisir un email valide");
+      ctrlOk = false;
+      return;
     }
 
     if (ctrlOk) {
@@ -72,10 +114,10 @@ function SignupForm(props) {
         <button type="submit" className="myButton">
           Signup
         </button>
+        <div>
+          <p>{errMessage}</p>
+        </div>
       </form>
-      <div>
-        <h2 className="creatProfilErr">{errMessage}</h2>
-      </div>
     </div>
   );
 }
