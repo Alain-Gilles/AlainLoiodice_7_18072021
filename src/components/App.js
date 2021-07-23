@@ -2,9 +2,10 @@ import Banner from "./Banner";
 import logo from "../assets/logo5.png";
 import SignupForm from "./SignupForm";
 import About from "./About";
+import Contact from "./Contact";
 import LoginForm from "./LoginForm";
-
-import React, { Fragment } from "react";
+import GetAllMessages from "./GetAllMessages";
+import React from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -16,7 +17,19 @@ import {
 function App() {
   const name = "John Doe !";
   const trtOk = false;
-  const isAuthenticated = true;
+  let isAuthenticated = true;
+
+  const [validAuth, SetValidAuth] = React.useState(false);
+
+  // let lc = localStorage.getItem("AccMe");
+  // console.log("lc  ", lc);
+  // let isAuthenticated = false;
+  // if (lc == "true") {
+  //   isAuthenticated = true;
+  // } else {
+  //   isAuthenticated = false;
+  // }
+  // console.log("isAuthenticated", isAuthenticated);
 
   return (
     <div>
@@ -38,6 +51,9 @@ function App() {
                 <Link to="/login">Login</Link>
               </li>
               <li>
+                <Link to="/allMessages">Messages</Link>
+              </li>
+              <li>
                 <Link to={`/about/${name}`}>About</Link>
               </li>
               <li>
@@ -48,10 +64,22 @@ function App() {
           {/* <Route path="/" render={() => <h1>Welcome!</h1>} /> */}
         </div>
         <Switch>
-          <Route path="/" exact component={SignupForm} />
-          <Route path="/login" component={LoginForm} />
+          {/* <Route path="/" exact component={SignupForm} /> */}
+          <Route
+            path="/"
+            exact
+            render={(props) => <SignupForm {...props} validAuth={false} />}
+          />
+
+          {/* <Route path="/login" component={LoginForm} /> */}
+          <Route
+            path="/login"
+            render={(props) => <LoginForm {...props} validAuth={false} />}
+          />
+
           {isAuthenticated ? (
             <>
+              <Route path="/allMessages" component={GetAllMessages} />
               <Route path="/about/:name" component={About1} />
               <Route path="/contact" component={Contact} />
             </>
@@ -63,44 +91,6 @@ function App() {
     </div>
   );
 }
-
-// Home Page
-// const Home = () => (
-//   <Fragment>
-//     <h1>Home</h1>
-//     <FakeText />
-//   </Fragment>
-// );
-// About Page
-// const About = ({
-//   match: {
-//     params: { name },
-//   },
-// }) => (
-//   <Fragment>
-//     {name !== "John Doe" ? <Redirect to="/" /> : null}
-//     <h1>About {name} </h1>
-//     <FakeText />
-//   </Fragment>
-// );
-// Contact Page
-const Contact = ({ history }) => (
-  <Fragment>
-    <h1>Contact</h1>
-    <button onClick={() => history.push("/")}>Go to home</button>
-    <FakeText />
-  </Fragment>
-);
-const FakeText = () => (
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  </p>
-);
 
 const About1 = ({
   match: {

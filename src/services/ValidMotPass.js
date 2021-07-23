@@ -1,9 +1,4 @@
 function ValidMotPass(password, objretour) {
-  var lower = false;
-  var upper = false;
-  var numbers = false;
-  var special = false;
-
   if (password.length < 8) {
     objretour["errmess"] =
       "Le mot de passe doit-être supérieur ou égal à 8 caractères";

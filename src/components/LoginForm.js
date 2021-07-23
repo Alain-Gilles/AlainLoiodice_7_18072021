@@ -12,6 +12,8 @@ function LoginForm(props) {
   let trtValid = false;
   let ctrlOk = true;
 
+  console.log("Login props.validAuth  ", props.validAuth);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = {
@@ -51,6 +53,7 @@ function LoginForm(props) {
       return;
     }
     if (ctrlOk) {
+      let trt = "Login";
       AxLogin(formData)
         .then(function (response) {
           console.log(response);
@@ -60,9 +63,8 @@ function LoginForm(props) {
           //
           console.log("response.data ", response.data);
           console.log("response.data.userId ", response.data.userId);
-          console.log("response.data.userId ", response.data.userId);
-          LocSto(response.data.userId, response.data.token);
-          //window.location.href = "/contact";
+          LocSto(trt, response.data.userId, response.data.token);
+          window.location.href = "/contact";
         })
         .catch(function (error) {
           const errorData = error && error.response && error.response.data;

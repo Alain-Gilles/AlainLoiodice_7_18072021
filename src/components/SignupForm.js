@@ -4,6 +4,7 @@ import React from "react";
 import AxSignup from "../services/AxSignup";
 import ValidMotPass from "../services/ValidMotPass";
 import ValidEmail from "../services/ValidEmail";
+import LocSto from "../services/LocSto";
 
 function SignupForm(props) {
   const nameEl = React.useRef(null);
@@ -12,8 +13,17 @@ function SignupForm(props) {
   const emailEl = React.useRef(null);
   const [errMessage, setErrMessage] = React.useState("");
 
+  console.log("signup props.validAuth  ", props.validAuth);
+
   let trtValid = false;
   let ctrlOk = true;
+  let trt = "Signup";
+  let id = "";
+  let token = "";
+  //
+  // Reinitialisation local storage token, id, Auth
+  //
+  LocSto(trt, id, token);
 
   const handleSubmit = (e) => {
     e.preventDefault();
