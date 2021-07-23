@@ -1,12 +1,38 @@
-/* label {
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html {
+  background-color: lightgray;
+  padding: 50px;
+  max-width: 1590px;
+}
+
+body {
+  font-size: 100%;
+  margin: auto;
+  background-color: lightyellow;
+}
+
+#root {
+  display: flex;
+  flex-direction: row;
+}
+
+label {
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
   font-size: 13px;
   color: gray;
-} */
+}
 
-/* input[type="text"],
+input[type="text"],
 input[type="password"] {
   width: 100%;
   background-color: lightgrey;
@@ -42,15 +68,4 @@ form {
   font-size: 15px;
   padding: 10px 20px;
   text-decoration: none;
-} */
-
-.creatProfil {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.creatProfilTitre {
-  color: black;
-  font-size: calc(8px + 2vmin);
 }

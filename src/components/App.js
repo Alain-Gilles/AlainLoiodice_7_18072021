@@ -5,6 +5,9 @@ import About from "./About";
 import Contact from "./Contact";
 import LoginForm from "./LoginForm";
 import GetAllMessages from "./GetAllMessages";
+import AffichAllMessages from "./AffichAllMessages";
+import CreatMess from "./CreatMess";
+import "../styles/App.css";
 import React from "react";
 import {
   BrowserRouter as Router,
@@ -32,7 +35,7 @@ function App() {
   // console.log("isAuthenticated", isAuthenticated);
 
   return (
-    <div>
+    <div className="bloc-App">
       <Banner>
         <div className="ban-groupe-logo">
           <img className="ban-logo" src={logo} alt="Groupomania" />
@@ -50,9 +53,9 @@ function App() {
               <li>
                 <Link to="/login">Login</Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/allMessages">Messages</Link>
-              </li>
+              </li> */}
               <li>
                 <Link to={`/about/${name}`}>About</Link>
               </li>
@@ -80,6 +83,8 @@ function App() {
           {isAuthenticated ? (
             <>
               <Route path="/allMessages" component={GetAllMessages} />
+              <Route path="/affichAllMessages" component={AffichAllMessages} />
+              <Route path="/creatMessage" component={CreatMess} />
               <Route path="/about/:name" component={About1} />
               <Route path="/contact" component={Contact} />
             </>

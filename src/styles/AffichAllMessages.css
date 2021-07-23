@@ -1,0 +1,32 @@
+.grp-AllMess-Corps {
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: space-between;
+  width: 100%;
+  color: orangered;
+  background-color: black;
+}
+
+.grp-AllMess-list {
+  list-style-type: none;
+  padding: 32px;
+  width: 100%;
+  background-color: lightyellow;
+  color: black;
+}
+
+.grp-AllMess-Ent {
+  display: flex;
+  justify-content: center;
+}
+
+.grp-Onclick-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.grp-p-btn {
+  font-size: 1.2em;
+  font-weight: bold;
+}
