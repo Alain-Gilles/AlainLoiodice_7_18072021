@@ -10,8 +10,20 @@ function AffichAllMessages() {
 
   console.log("messageList  ", messageList);
 
-  function modifMessage() {
-    alert("fonction modif messages");
+  function affichMessage(id, userId, title, content, objet, imgUrl) {
+    alert(
+      "fonction affich messages " +
+        "id  " +
+        id +
+        "userId " +
+        userId +
+        "title " +
+        title
+    );
+    let affichMessRoute = "/affichMessages/" + id + "/" + userId;
+    //window.location.href = "/affichMessages/:id/:userId";
+    alert(affichMessRoute);
+    window.location.href = affichMessRoute;
   }
 
   return (
@@ -44,9 +56,11 @@ function AffichAllMessages() {
               />
               <button
                 className="grp-AllMess-btn"
-                onClick={() => modifMessage()}
+                onClick={() =>
+                  affichMessage(id, userId, title, content, objet, imgUrl)
+                }
               >
-                Modifier
+                Afficher
               </button>
             </div>
           ))}

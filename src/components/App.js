@@ -7,6 +7,7 @@ import LoginForm from "./LoginForm";
 import GetAllMessages from "./GetAllMessages";
 import AffichAllMessages from "./AffichAllMessages";
 import CreatMess from "./CreatMess";
+import AffichUnMessage from "./AffichUnMessage";
 import "../styles/App.css";
 import React from "react";
 import {
@@ -84,6 +85,10 @@ function App() {
             <>
               <Route path="/allMessages" component={GetAllMessages} />
               <Route path="/affichAllMessages" component={AffichAllMessages} />
+              <Route
+                path="/affichMessages/:id/:userId"
+                component={AffichUnMessage}
+              />
               <Route path="/creatMessage" component={CreatMess} />
               <Route path="/about/:name" component={About1} />
               <Route path="/contact" component={Contact} />
