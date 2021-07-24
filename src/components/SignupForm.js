@@ -21,7 +21,7 @@ function SignupForm(props) {
   let id = "";
   let token = "";
   //
-  // Reinitialisation local storage token, id, Auth
+  // Reinitialisation local storage token, id, Auth , AllMessage
   //
   LocSto(trt, id, token);
 

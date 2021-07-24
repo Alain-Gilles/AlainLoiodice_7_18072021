@@ -26,6 +26,9 @@ function LocSto(trt, id, token) {
   if ("tokenUser" in localStorage) {
     localStorage.removeItem("tokenUser");
   }
+  if ("AllMessage" in localStorage) {
+    localStorage.removeItem("AllMessage");
+  }
   if (trt == "Login") {
     accMenu = true;
     localStorage.setItem("AccMe", accMenu);

@@ -2,7 +2,6 @@ import React from "react";
 import axios from "axios";
 
 function AxSignup(formData) {
-  console.log("axiosSignup formData", formData);
   var axios = require("axios");
   // var data = JSON.stringify({
   //   formData,
