@@ -38,7 +38,6 @@ function CreatMess(props) {
       return;
     }
     if (ctrlOk) {
-      alert(formData.title + "  " + formData.content + " " + formData.objet);
       AxCreatMess(idls, idtoken, formData)
         .then(function (response) {
           console.log(response);

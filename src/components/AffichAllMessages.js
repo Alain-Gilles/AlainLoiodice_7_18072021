@@ -11,18 +11,8 @@ function AffichAllMessages() {
   console.log("messageList  ", messageList);
 
   function affichMessage(id, userId, title, content, objet, imgUrl) {
-    alert(
-      "fonction affich messages " +
-        "id  " +
-        id +
-        "userId " +
-        userId +
-        "title " +
-        title
-    );
-    let affichMessRoute = "/affichMessages/" + id + "/" + userId;
-    //window.location.href = "/affichMessages/:id/:userId";
-    alert(affichMessRoute);
+    let affichMessRoute = "/unMessage/" + id + "/" + userId;
+    //window.location.href = "/unMessage/:id/:userId";
     window.location.href = affichMessRoute;
   }
 
