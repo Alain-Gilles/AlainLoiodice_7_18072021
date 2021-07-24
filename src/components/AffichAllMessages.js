@@ -7,7 +7,13 @@ function AffichAllMessages() {
     messageList = localStorage.getItem("AllMessage");
     messageList = JSON.parse(messageList);
   }
+
   console.log("messageList  ", messageList);
+
+  function modifMessage() {
+    alert("fonction modif messages");
+  }
+
   return (
     <div className="grp-AllMess-Corps">
       <h1 className="grp-AllMess-Ent">Messages</h1>
@@ -19,14 +25,30 @@ function AffichAllMessages() {
       <div>
         <ul className="grp-AllMess-list">
           {messageList.map(({ id, title, content, objet, imgUrl, userId }) => (
-            <MessageItem
-              id={id}
-              title={title}
-              content={content}
-              objet={objet}
-              imgUrl={imgUrl}
-              userId={userId}
-            />
+            // <MessageItem
+            //   id={id}
+            //   title={title}
+            //   content={content}
+            //   objet={objet}
+            //   imgUrl={imgUrl}
+            //   userId={userId}
+            // />
+            <div className="grp-AllMess-bloc" key={id}>
+              <MessageItem
+                id={id}
+                title={title}
+                content={content}
+                objet={objet}
+                imgUrl={imgUrl}
+                userId={userId}
+              />
+              <button
+                className="grp-AllMess-btn"
+                onClick={() => modifMessage()}
+              >
+                Modifier
+              </button>
+            </div>
           ))}
         </ul>
       </div>
