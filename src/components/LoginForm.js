@@ -64,9 +64,7 @@ function LoginForm(props) {
           console.log("response.data ", response.data);
           console.log("response.data.userId ", response.data.userId);
           LocSto(trt, response.data.userId, response.data.token);
-          //window.location.href = "/allMessages";
-          //window.location.href = "/allUsers";
-          window.location.href = "/allMessagesInit";
+          window.location.href = "/allMessages";
         })
         .catch(function (error) {
           const errorData = error && error.response && error.response.data;

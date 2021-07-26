@@ -2,15 +2,12 @@ import Banner from "./Banner";
 import logo from "../assets/logo5.png";
 import SignupForm from "./SignupForm";
 import About from "./About";
-import Contact from "./Contact";
 import LoginForm from "./LoginForm";
 import GetAllMessages from "./GetAllMessages";
-import AffichAllMessages from "./AffichAllMessages";
 import CreatMess from "./CreatMess";
 import AffichUnMessage from "./AffichUnMessage";
 import GetUnMessage from "./GetUnMessage";
 import GetAllUsers from "./GetAllUsers";
-import GetAllMessagesInit from "./GetAllMessagesInit";
 import "../styles/App.css";
 import React from "react";
 import {
@@ -63,9 +60,6 @@ function App() {
               <li>
                 <Link to={`/about/${name}`}>About</Link>
               </li>
-              <li>
-                <Link to="/contact">Contact</Link>
-              </li>
             </ul>
           </nav>
           {/* <Route path="/" render={() => <h1>Welcome!</h1>} /> */}
@@ -87,14 +81,11 @@ function App() {
           {isAuthenticated ? (
             <>
               <Route path="/allUsers" component={GetAllUsers} />
-              <Route path="/allMessagesInit" component={GetAllMessagesInit} />
               <Route path="/allMessages" component={GetAllMessages} />
-              <Route path="/affichAllMessages" component={AffichAllMessages} />
               <Route path="/unMessage/:id/:userId" component={GetUnMessage} />
               <Route path="/affichUnMessage" component={AffichUnMessage} />
               <Route path="/creatMessage" component={CreatMess} />
               <Route path="/about/:name" component={About1} />
-              <Route path="/contact" component={Contact} />
             </>
           ) : (
             <Redirect to="/" />
