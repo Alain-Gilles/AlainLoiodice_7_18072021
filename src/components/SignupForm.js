@@ -116,7 +116,7 @@ function SignupForm(props) {
       <div className="creatProfil">
         <h2 className="creatProfilTitre">Création d'un profil utilisateur</h2>
       </div>
-      <form onSubmit={handleSubmit}>
+      <form className="creatProfilForm" onSubmit={handleSubmit}>
         <input type="text" placeholder="username" ref={nameEl} />
         <input type="password" placeholder="password" ref={passwordEl} />
         <input type="text" placeholder="pseudo" ref={pseudoEl} />
@@ -124,7 +124,7 @@ function SignupForm(props) {
         <button type="submit" className="myButton">
           Signup
         </button>
-        <div>
+        <div className="creatProfilErr">
           <p>{errMessage}</p>
         </div>
       </form>

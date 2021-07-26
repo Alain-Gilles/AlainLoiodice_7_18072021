@@ -45,7 +45,8 @@ function AffichUnMessage() {
 function handleClick(e) {
   e.preventDefault();
   console.log("Le lien a été cliqué.");
-  window.location.href = "/allMessages";
+  //window.location.href = "/allMessages";
+  window.location.href = "/allMessagesInit";
 }
 
 export default AffichUnMessage;

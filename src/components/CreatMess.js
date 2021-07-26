@@ -44,7 +44,8 @@ function CreatMess(props) {
           console.log(JSON.stringify(response.data));
           console.log("response.data ", response.data);
           console.log("response.data.userId ", response.data.userId);
-          window.location.href = "/allMessages";
+          //window.location.href = "/allMessages";
+          window.location.href = "/allMessagesInit";
         })
         .catch(function (error) {
           const errorData = error && error.response && error.response.data;
@@ -137,7 +138,8 @@ function CreatMess(props) {
 }
 
 function abandon() {
-  window.location.href = "/allMessages";
+  //window.location.href = "/allMessages";
+  window.location.href = "/allMessagesInit";
 }
 
 export default CreatMess;

@@ -9,6 +9,8 @@ import AffichAllMessages from "./AffichAllMessages";
 import CreatMess from "./CreatMess";
 import AffichUnMessage from "./AffichUnMessage";
 import GetUnMessage from "./GetUnMessage";
+import GetAllUsers from "./GetAllUsers";
+import GetAllMessagesInit from "./GetAllMessagesInit";
 import "../styles/App.css";
 import React from "react";
 import {
@@ -55,9 +57,9 @@ function App() {
               <li>
                 <Link to="/login">Login</Link>
               </li>
-              {/* <li>
-                <Link to="/allMessages">Messages</Link>
-              </li> */}
+              <li>
+                <Link to="/allUsers">User List</Link>
+              </li>
               <li>
                 <Link to={`/about/${name}`}>About</Link>
               </li>
@@ -84,6 +86,8 @@ function App() {
 
           {isAuthenticated ? (
             <>
+              <Route path="/allUsers" component={GetAllUsers} />
+              <Route path="/allMessagesInit" component={GetAllMessagesInit} />
               <Route path="/allMessages" component={GetAllMessages} />
               <Route path="/affichAllMessages" component={AffichAllMessages} />
               <Route path="/unMessage/:id/:userId" component={GetUnMessage} />

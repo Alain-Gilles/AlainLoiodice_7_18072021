@@ -1,15 +1,14 @@
 import React from "react";
 import axios from "axios";
 
-function AxUnMessage(idls, idtoken, id) {
+function AxAllUsers(id, idtoken) {
   var axios = require("axios");
   var data = {
-    userId: idls,
+    userId: id,
   };
-  let urlName = "http://localhost:3000/api/mess/getOne/" + id + "?" + idls;
   var config = {
     method: "post",
-    url: urlName,
+    url: "http://localhost:3000/api/auth",
     headers: {
       Authorization: idtoken,
       "Content-Type": "application/json",
@@ -20,5 +19,4 @@ function AxUnMessage(idls, idtoken, id) {
   return axios(config);
 }
 
-export default AxUnMessage;
-//
+export default AxAllUsers;

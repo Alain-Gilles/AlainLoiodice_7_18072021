@@ -64,8 +64,9 @@ function LoginForm(props) {
           console.log("response.data ", response.data);
           console.log("response.data.userId ", response.data.userId);
           LocSto(trt, response.data.userId, response.data.token);
-          // window.location.href = "/contact";
-          window.location.href = "/allMessages";
+          //window.location.href = "/allMessages";
+          //window.location.href = "/allUsers";
+          window.location.href = "/allMessagesInit";
         })
         .catch(function (error) {
           const errorData = error && error.response && error.response.data;
@@ -84,17 +85,17 @@ function LoginForm(props) {
     );
   return (
     <div>
-      <div className="creatProfil">
-        <h2 className="creatProfilTitre">Connexion d'un utilisateur</h2>
+      <div className="loginProfil">
+        <h2 className="loginProfilTitre">Connexion d'un utilisateur</h2>
       </div>
-      <form onSubmit={handleSubmit}>
+      <form className="loginProfilForm" onSubmit={handleSubmit}>
         <input type="text" placeholder="pseudo" ref={pseudoEl} />
         <input type="text" placeholder="email" ref={emailEl} />
         <input type="password" placeholder="password" ref={passwordEl} />
         <button type="submit" className="myButton">
           Login
         </button>
-        <div>
+        <div className="loginProfilErr">
           <p>{errMessage}</p>
         </div>
       </form>

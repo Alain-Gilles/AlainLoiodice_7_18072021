@@ -44,13 +44,26 @@ form {
   text-decoration: none;
 } */
 
-.creatProfil {
+.loginProfil {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
-.creatProfilTitre {
+.loginProfilTitre {
   color: black;
   font-size: calc(8px + 2vmin);
+}
+
+.loginProfilForm {
+  margin-bottom: 60px;
+}
+
+.loginProfilErr {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: red;
+  font-size: calc(8px + 1.2vmin);
 }
