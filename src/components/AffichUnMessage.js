@@ -57,19 +57,20 @@ function AffichUnMessage() {
               imgUrl={message.imgUrl}
               userId={message.userId}
             />
-            {/* <button
-                className="grp-AllMess-btn"
-                onClick={() =>
-                  affichMessage(id, userId, title, content, objet, imgUrl)
-                }
-              >
-                Afficher
-              </button> */}
+            <button
+              className="grp-AllMess-btn grp-AllMessComm-btn"
+              onClick={handleClick2}
+            >
+              <p>Création d'un commentaire</p>
+            </button>
           </div>
         </ul>
       </div>
 
       <div>
+        <div>
+          <h2 className="grp-AllMessComment">Commentaires</h2>
+        </div>
         <ul className="grp-AllMess-list">
           {comments.map(({ id, content, userId }) => (
             <div className="grp-AllMess-bloc" key={id}>
@@ -83,6 +84,12 @@ function AffichUnMessage() {
 }
 
 function handleClick(e) {
+  e.preventDefault();
+  console.log("Le lien a été cliqué.");
+  window.location.href = "/allMessages";
+}
+
+function handleClick2(e) {
   e.preventDefault();
   console.log("Le lien a été cliqué.");
   window.location.href = "/allMessages";

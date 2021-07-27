@@ -12,7 +12,7 @@ function AxCreatMess(idls, idtoken, formData) {
   console.log("axiosAxCreatMess Data", data);
   var config = {
     method: "post",
-    url: "http://localhost:3000/api/mess",
+    url: "http://localhost:3001/api/mess",
     headers: {
       Authorization: idtoken,
       "Content-Type": "application/json",

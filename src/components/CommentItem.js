@@ -1,13 +1,14 @@
 import "../styles/MessageItem.css";
+import "../styles/CommentItem.css";
 
 function CommentItem({ id, content, userId }) {
   return (
     // <li key={id} className="grp-Mess-item">
     <li key={id}>
-      <h1>{id}</h1>
-      <h2>{userId}</h2>
+      <p>Créateur du commentaire : {userId}</p>
+      <p>Numéro commentaire : {id}</p>
       <div>
-        <p>{content}</p>
+        <h2>{content}</h2>
       </div>
     </li>
   );

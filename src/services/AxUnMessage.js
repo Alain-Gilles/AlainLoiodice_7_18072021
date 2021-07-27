@@ -6,7 +6,7 @@ function AxUnMessage(idls, idtoken, id) {
   var data = {
     userId: idls,
   };
-  let urlName = "http://localhost:3000/api/mess/getOne/" + id + "?" + idls;
+  let urlName = "http://localhost:3001/api/mess/getOne/" + id + "?" + idls;
   var config = {
     method: "post",
     url: urlName,

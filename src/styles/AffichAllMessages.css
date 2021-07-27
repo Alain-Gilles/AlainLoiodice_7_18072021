@@ -51,3 +51,12 @@
   margin-top: 20px;
   margin-right: 30px;
 }
+
+.grp-AllMessComment {
+  display: flex;
+  justify-content: center;
+}
+
+.grp-AllMessComm-btn {
+  padding: 0px 20px;
+}

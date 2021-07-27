@@ -8,7 +8,7 @@ function AxAllUsers(id, idtoken) {
   };
   var config = {
     method: "post",
-    url: "http://localhost:3000/api/auth",
+    url: "http://localhost:3001/api/auth",
     headers: {
       Authorization: idtoken,
       "Content-Type": "application/json",

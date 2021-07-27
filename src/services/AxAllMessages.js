@@ -8,7 +8,7 @@ function AxAllMessages(id, idtoken) {
   };
   var config = {
     method: "post",
-    url: "http://localhost:3000/api/mess/get",
+    url: "http://localhost:3001/api/mess/get",
     headers: {
       Authorization: idtoken,
       "Content-Type": "application/json",
