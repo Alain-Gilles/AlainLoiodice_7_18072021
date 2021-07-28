@@ -18,7 +18,8 @@ function GetAllMessages() {
     objet,
     imgUrl,
     createdAt,
-    updatedAt
+    updatedAt,
+    user
   ) {
     let affichMessRoute = "/unMessage/" + id + "/" + userId;
     window.location.href = affichMessRoute;
@@ -26,7 +27,6 @@ function GetAllMessages() {
 
   const [messages, setMessages] = useState([]);
   const GetMessages = (idls, idtoken) => {
-    console.log("Appel de set AxAllMessages");
     AxAllMessages(idls, idtoken)
       .then((response) => {
         setMessages(response.data);
@@ -40,7 +40,7 @@ function GetAllMessages() {
   useEffect(() => {
     GetMessages(idls, idtoken);
   }, []);
-
+  console.log("messages[0]  ", messages[0]);
   return (
     <div className="grp-AllMess-Corps">
       <h1 className="grp-AllMess-Ent">Messages</h1>
@@ -61,6 +61,7 @@ function GetAllMessages() {
               userId,
               createdAt,
               updatedAt,
+              user,
             }) => (
               <div className="grp-AllMess-bloc" key={id}>
                 <MessageItem
@@ -72,6 +73,7 @@ function GetAllMessages() {
                   userId={userId}
                   createdAt={createdAt}
                   updatedAt={updatedAt}
+                  user={user}
                 />
                 <button
                   className="grp-AllMess-btn"
@@ -84,7 +86,8 @@ function GetAllMessages() {
                       objet,
                       imgUrl,
                       createdAt,
-                      updatedAt
+                      updatedAt,
+                      user
                     )
                   }
                 >

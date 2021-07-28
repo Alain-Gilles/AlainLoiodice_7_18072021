@@ -57,6 +57,7 @@ function AffichUnMessage() {
               userId={message.userId}
               createdAt={message.createdAt}
               updatedAt={message.updatedAt}
+              user={message.user}
             />
             <button
               className="grp-AllMess-btn grp-AllMessComm-btn"
@@ -73,17 +74,20 @@ function AffichUnMessage() {
           <h2 className="grp-AllMessComment">Commentaires</h2>
         </div>
         <ul className="grp-AllMess-list">
-          {comments.map(({ id, content, userId, createdAt, updatedAt }) => (
-            <div className="grp-AllMess-bloc" key={id}>
-              <CommentItem
-                id={id}
-                content={content}
-                userId={userId}
-                createdAt={createdAt}
-                updatedAt={updatedAt}
-              />
-            </div>
-          ))}
+          {comments.map(
+            ({ id, content, userId, createdAt, updatedAt, user }) => (
+              <div className="grp-AllMess-bloc" key={id}>
+                <CommentItem
+                  id={id}
+                  content={content}
+                  userId={userId}
+                  createdAt={createdAt}
+                  updatedAt={updatedAt}
+                  user={user}
+                />
+              </div>
+            )
+          )}
         </ul>
       </div>
     </div>
