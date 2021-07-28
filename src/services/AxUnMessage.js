@@ -3,18 +3,15 @@ import axios from "axios";
 
 function AxUnMessage(idls, idtoken, id) {
   var axios = require("axios");
-  var data = {
-    userId: idls,
-  };
-  let urlName = "http://localhost:3001/api/mess/getOne/" + id + "?" + idls;
+  let configUrl =
+    "http://localhost:3001/api/mess/" + id + "?" + "userId" + "=" + idls;
   var config = {
-    method: "post",
-    url: urlName,
+    method: "get",
+    url: configUrl,
     headers: {
       Authorization: idtoken,
       "Content-Type": "application/json",
     },
-    data: data,
   };
 
   return axios(config);

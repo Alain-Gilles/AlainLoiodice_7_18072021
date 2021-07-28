@@ -23,7 +23,6 @@ function AffichUnMessage() {
 
   const [comments, setComments] = useState([]);
   const GetComments = (idmess, idls, idtoken) => {
-    console.log("Appel de set AxAllOneMessComments");
     AxAllOneMessComments(idmess, idls, idtoken)
       .then((response) => {
         setComments(response.data);
@@ -56,6 +55,8 @@ function AffichUnMessage() {
               objet={message.objet}
               imgUrl={message.imgUrl}
               userId={message.userId}
+              createdAt={message.createdAt}
+              updatedAt={message.updatedAt}
             />
             <button
               className="grp-AllMess-btn grp-AllMessComm-btn"

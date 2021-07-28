@@ -3,22 +3,23 @@ import axios from "axios";
 
 function AxAllOneMessComments(idmess, IdUser, idtoken) {
   var axios = require("axios");
-  var data = {
-    userId: IdUser,
-  };
-  let urlName = "http://localhost:3001/api/mess/comm/" + idmess;
+  let configUrl =
+    "http://localhost:3001/api/mess/comm/" +
+    idmess +
+    "?" +
+    "userId" +
+    "=" +
+    IdUser;
   var config = {
-    method: "post",
-    url: urlName,
+    method: "get",
+    url: configUrl,
     headers: {
       Authorization: idtoken,
       "Content-Type": "application/json",
     },
-    data: data,
   };
 
   return axios(config);
 }
 
 export default AxAllOneMessComments;
-//

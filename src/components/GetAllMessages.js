@@ -10,7 +10,16 @@ function GetAllMessages() {
   const idtokenls = localStorage.getItem("tokenUser");
   const idtoken = "Bearer" + " " + idtokenls;
 
-  function affichMessage(id, userId, title, content, objet, imgUrl) {
+  function affichMessage(
+    id,
+    userId,
+    title,
+    content,
+    objet,
+    imgUrl,
+    createdAt,
+    updatedAt
+  ) {
     let affichMessRoute = "/unMessage/" + id + "/" + userId;
     window.location.href = affichMessRoute;
   }
@@ -42,26 +51,48 @@ function GetAllMessages() {
       </div>
       <div>
         <ul className="grp-AllMess-list">
-          {messages.map(({ id, title, content, objet, imgUrl, userId }) => (
-            <div className="grp-AllMess-bloc" key={id}>
-              <MessageItem
-                id={id}
-                title={title}
-                content={content}
-                objet={objet}
-                imgUrl={imgUrl}
-                userId={userId}
-              />
-              <button
-                className="grp-AllMess-btn"
-                onClick={() =>
-                  affichMessage(id, userId, title, content, objet, imgUrl)
-                }
-              >
-                Afficher
-              </button>
-            </div>
-          ))}
+          {messages.map(
+            ({
+              id,
+              title,
+              content,
+              objet,
+              imgUrl,
+              userId,
+              createdAt,
+              updatedAt,
+            }) => (
+              <div className="grp-AllMess-bloc" key={id}>
+                <MessageItem
+                  id={id}
+                  title={title}
+                  content={content}
+                  objet={objet}
+                  imgUrl={imgUrl}
+                  userId={userId}
+                  createdAt={createdAt}
+                  updatedAt={updatedAt}
+                />
+                <button
+                  className="grp-AllMess-btn"
+                  onClick={() =>
+                    affichMessage(
+                      id,
+                      userId,
+                      title,
+                      content,
+                      objet,
+                      imgUrl,
+                      createdAt,
+                      updatedAt
+                    )
+                  }
+                >
+                  Afficher
+                </button>
+              </div>
+            )
+          )}
         </ul>
       </div>
     </div>
