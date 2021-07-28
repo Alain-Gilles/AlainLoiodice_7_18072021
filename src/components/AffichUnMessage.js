@@ -73,9 +73,15 @@ function AffichUnMessage() {
           <h2 className="grp-AllMessComment">Commentaires</h2>
         </div>
         <ul className="grp-AllMess-list">
-          {comments.map(({ id, content, userId }) => (
+          {comments.map(({ id, content, userId, createdAt, updatedAt }) => (
             <div className="grp-AllMess-bloc" key={id}>
-              <CommentItem id={id} content={content} userId={userId} />
+              <CommentItem
+                id={id}
+                content={content}
+                userId={userId}
+                createdAt={createdAt}
+                updatedAt={updatedAt}
+              />
             </div>
           ))}
         </ul>
