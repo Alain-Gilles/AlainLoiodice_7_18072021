@@ -1,18 +1,3 @@
-// function LocSto(id, token) {
-//   if ("IdUser" in localStorage) {
-//     //
-//     // Suppression de la clé dans le local storage
-//     //
-//     localStorage.removeItem("IdUser");
-//   }
-//   localStorage.setItem("IdUser", id);
-//   if ("tokenUser" in localStorage) {
-//     localStorage.removeItem("tokenUser");
-//   }
-//   localStorage.setItem("tokenUser", token);
-// }
-// export default LocSto;
-
 function LocSto(trt, id, token) {
   let accMenu = false;
 
@@ -25,9 +10,6 @@ function LocSto(trt, id, token) {
   }
   if ("tokenUser" in localStorage) {
     localStorage.removeItem("tokenUser");
-  }
-  if ("AllMessage" in localStorage) {
-    localStorage.removeItem("AllMessage");
   }
   if (trt == "Login") {
     accMenu = true;

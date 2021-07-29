@@ -13,8 +13,6 @@ function SignupForm(props) {
   const emailEl = React.useRef(null);
   const [errMessage, setErrMessage] = React.useState("");
 
-  console.log("signup props.validAuth  ", props.validAuth);
-
   let trtValid = false;
   let ctrlOk = true;
   let trt = "Signup";
@@ -92,17 +90,6 @@ function SignupForm(props) {
           setErrMessage(errorData.message);
         });
     }
-    //
-    //
-    // var axios = require("axios");
-    // var data = JSON.stringify({
-    //   formData,
-    // });
-    // console.log("data 1", data);
-
-    //
-    //
-    //
   };
   if (trtValid)
     // retour a App.js en passant l'info que la création du profil est réussie

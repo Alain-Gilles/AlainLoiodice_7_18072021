@@ -25,6 +25,33 @@ function GetAllMessages() {
     window.location.href = affichMessRoute;
   }
 
+  function modifMessage(
+    id,
+    userId,
+    title,
+    content,
+    objet,
+    imgUrl,
+    createdAt,
+    updatedAt,
+    user
+  ) {
+    const modifMess = {
+      _id: id,
+      _userId: userId,
+      _title: title,
+      _content: content,
+      _objet: objet,
+      _imgUrl: imgUrl,
+      _createdAt: createdAt,
+      _updatedAt: updatedAt,
+      _user: user,
+    };
+    let modifMessStringify = JSON.stringify(modifMess);
+    localStorage.setItem("ModifUnMessage", modifMessStringify);
+    window.location.href = "/modifUnMessage";
+  }
+
   const [messages, setMessages] = useState([]);
   const GetMessages = (idls, idtoken) => {
     AxAllMessages(idls, idtoken)
@@ -93,6 +120,27 @@ function GetAllMessages() {
                 >
                   Afficher
                 </button>
+                {/* Affichage bouton conditionner si Admin ou si le créateur du message est le  user connecté */}
+                {(user.isAdmin || idls == userId) && (
+                  <button
+                    className="grp-AllMess-btn"
+                    onClick={() =>
+                      modifMessage(
+                        id,
+                        userId,
+                        title,
+                        content,
+                        objet,
+                        imgUrl,
+                        createdAt,
+                        updatedAt,
+                        user
+                      )
+                    }
+                  >
+                    Modifier
+                  </button>
+                )}
               </div>
             )
           )}

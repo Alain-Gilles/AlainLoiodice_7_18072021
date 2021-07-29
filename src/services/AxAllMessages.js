@@ -6,8 +6,6 @@ function AxAllMessages(id, idtoken) {
 
   let configUrl = "http://localhost:3001/api/mess" + "?" + "userId" + "=" + id;
   var config = {
-    // method: "post",
-    // url: "http://localhost:3001/api/mess/get",
     method: "get",
     url: configUrl,
     headers: {
