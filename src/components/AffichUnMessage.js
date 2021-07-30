@@ -8,7 +8,11 @@ import CommentItem from "./CommentItem";
 import "../styles/AffichAllMessages.css";
 
 function AffichUnMessage() {
-  const idls = localStorage.getItem("IdUser");
+  const connect = JSON.parse(localStorage.getItem("Connect"));
+  const idls = connect.id;
+  const isAdmin = connect.ad;
+  const pseudo = connect.ps;
+  //const idls = localStorage.getItem("IdUser");
   const idtokenls = localStorage.getItem("tokenUser");
   const idtoken = "Bearer" + " " + idtokenls;
   const [errMessage, setErrMessage] = React.useState("");
@@ -39,6 +43,7 @@ function AffichUnMessage() {
 
   return (
     <div className="grp-AllMess-Corps">
+      <p className="grp-AllMess-Ent grp-AllMess-Bonjour">Bonjour {pseudo}</p>
       <h1 className="grp-AllMess-Ent">Message</h1>
       <div className="grp-Onclick-btn">
         <button onClick={handleClick}>
@@ -99,7 +104,7 @@ function handleClick(e) {
   console.log("Le lien a été cliqué.");
   window.location.href = "/allMessages";
 }
-
+// Création d'un commentaire
 function handleClick2(e) {
   e.preventDefault();
   console.log("Le lien a été cliqué.");

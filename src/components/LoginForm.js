@@ -61,9 +61,13 @@ function LoginForm(props) {
           //
           // Mise à jour de l'id et du token dans local storage ?
           //
-          console.log("response.data ", response.data);
-          console.log("response.data.userId ", response.data.userId);
-          LocSto(trt, response.data.userId, response.data.token);
+          LocSto(
+            trt,
+            response.data.userId,
+            response.data.token,
+            response.data.userIsAdmin,
+            response.data.userPseudo
+          );
           window.location.href = "/allMessages";
         })
         .catch(function (error) {

@@ -9,6 +9,7 @@ import AffichUnMessage from "./AffichUnMessage";
 import GetUnMessage from "./GetUnMessage";
 import GetAllUsers from "./GetAllUsers";
 import ModifUnMessage from "./ModifUnMessage";
+import SupprUnMessage from "./SupprUnMessage";
 import "../styles/App.css";
 import React from "react";
 import {
@@ -87,6 +88,7 @@ function App() {
               <Route path="/affichUnMessage" component={AffichUnMessage} />
               <Route path="/creatMessage" component={CreatMess} />
               <Route path="/modifUnMessage" component={ModifUnMessage} />
+              <Route path="/supprUnMessage" component={SupprUnMessage} />
               <Route path="/about/:name" component={About1} />
             </>
           ) : (

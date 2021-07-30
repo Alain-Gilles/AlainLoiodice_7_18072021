@@ -6,10 +6,14 @@ import "../styles/AffichAllMessages.css";
 
 function GetAllMessages() {
   const [errMessage, setErrMessage] = React.useState("");
-  const idls = localStorage.getItem("IdUser");
+  const connect = JSON.parse(localStorage.getItem("Connect"));
+  const idls = connect.id;
+  const isAdmin = connect.ad;
+  const pseudo = connect.ps;
+
+  //const idls = localStorage.getItem("IdUser");
   const idtokenls = localStorage.getItem("tokenUser");
   const idtoken = "Bearer" + " " + idtokenls;
-
   function affichMessage(
     id,
     userId,
@@ -52,6 +56,33 @@ function GetAllMessages() {
     window.location.href = "/modifUnMessage";
   }
 
+  function supprMessage(
+    id,
+    userId,
+    title,
+    content,
+    objet,
+    imgUrl,
+    createdAt,
+    updatedAt,
+    user
+  ) {
+    const modifMess = {
+      _id: id,
+      _userId: userId,
+      _title: title,
+      _content: content,
+      _objet: objet,
+      _imgUrl: imgUrl,
+      _createdAt: createdAt,
+      _updatedAt: updatedAt,
+      _user: user,
+    };
+    let modifMessStringify = JSON.stringify(modifMess);
+    localStorage.setItem("ModifUnMessage", modifMessStringify);
+    window.location.href = "/supprUnMessage";
+  }
+
   const [messages, setMessages] = useState([]);
   const GetMessages = (idls, idtoken) => {
     AxAllMessages(idls, idtoken)
@@ -70,6 +101,7 @@ function GetAllMessages() {
   console.log("messages[0]  ", messages[0]);
   return (
     <div className="grp-AllMess-Corps">
+      <p className="grp-AllMess-Ent grp-AllMess-Bonjour">Bonjour {pseudo}</p>
       <h1 className="grp-AllMess-Ent">Messages</h1>
       <div className="grp-Onclick-btn">
         <button onClick={handleClick}>
@@ -121,7 +153,7 @@ function GetAllMessages() {
                   Afficher
                 </button>
                 {/* Affichage bouton conditionner si Admin ou si le créateur du message est le  user connecté */}
-                {(user.isAdmin || idls == userId) && (
+                {(isAdmin || idls == userId) && (
                   <button
                     className="grp-AllMess-btn"
                     onClick={() =>
@@ -139,6 +171,26 @@ function GetAllMessages() {
                     }
                   >
                     Modifier
+                  </button>
+                )}
+                {(isAdmin || idls == userId) && (
+                  <button
+                    className="grp-AllMess-btn"
+                    onClick={() =>
+                      supprMessage(
+                        id,
+                        userId,
+                        title,
+                        content,
+                        objet,
+                        imgUrl,
+                        createdAt,
+                        updatedAt,
+                        user
+                      )
+                    }
+                  >
+                    Supprimer
                   </button>
                 )}
               </div>

@@ -2,7 +2,11 @@ import React from "react";
 import AxAllUsers from "../services/AxAllUsers";
 
 function GetAllUsers() {
-  const idls = localStorage.getItem("IdUser");
+  const connect = JSON.parse(localStorage.getItem("Connect"));
+  const idls = connect.id;
+  const isAdmin = connect.ad;
+  const pseudo = connect.ps;
+  //const idls = localStorage.getItem("IdUser");
   const idtokenls = localStorage.getItem("tokenUser");
   const idtoken = "Bearer" + " " + idtokenls;
   const [errMessage, setErrMessage] = React.useState("");

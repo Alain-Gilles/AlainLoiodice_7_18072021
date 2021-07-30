@@ -4,7 +4,11 @@ import "../styles/CreatMess.css";
 import AxModifMess from "../services/AxModifMess";
 
 function ModifUnMessage() {
-  const idls = localStorage.getItem("IdUser");
+  const connect = JSON.parse(localStorage.getItem("Connect"));
+  const idls = connect.id;
+  const isAdmin = connect.ad;
+  const pseudo = connect.ps;
+  //const idls = localStorage.getItem("IdUser");
   const idtokenls = localStorage.getItem("tokenUser");
   const idtoken = "Bearer" + " " + idtokenls;
   let message = JSON.parse(localStorage.getItem("ModifUnMessage"));

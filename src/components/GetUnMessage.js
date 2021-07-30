@@ -4,7 +4,11 @@ function GetUnMessage(props) {
   let id = props.match.params.id;
   let userId = props.match.params.userId;
   const [errMessage, setErrMessage] = React.useState("");
-  const idls = localStorage.getItem("IdUser");
+  const connect = JSON.parse(localStorage.getItem("Connect"));
+  const idls = connect.id;
+  const isAdmin = connect.ad;
+  const pseudo = connect.ps;
+  //const idls = localStorage.getItem("IdUser");
   const idtokenls = localStorage.getItem("tokenUser");
   const idtoken = "Bearer" + " " + idtokenls;
   var trtValid = false;
