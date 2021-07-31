@@ -11,6 +11,7 @@ import ModifUnMessage from "./ModifUnMessage";
 import SupprUnMessage from "./SupprUnMessage";
 import CreatComment from "./CreatComment";
 import ModifUnComment from "./ModifUnComment";
+import ListUsers from "./ListUsers";
 import "../styles/App.css";
 import React from "react";
 import {
@@ -50,12 +51,16 @@ function App() {
       <Router>
         <div>
           <nav>
-            <ul>
-              <li>
-                <Link to="/">Signup</Link>
+            <ul className="men-App">
+              <li className="men-li-App">
+                <Link className="men-link-App" to="/">
+                  Signup
+                </Link>
               </li>
-              <li>
-                <Link to="/login">Login</Link>
+              <li className="men-li-App">
+                <Link className="men-link-App" to="/login">
+                  Login
+                </Link>
               </li>
               {/* <li>
                 <Link to="/allUsers">User List</Link>
@@ -81,6 +86,7 @@ function App() {
           {isAuthenticated ? (
             <>
               <Route path="/allUsers" component={GetAllUsers} />
+              <Route path="/listUsers" component={ListUsers} />
               <Route path="/allMessages" component={GetAllMessages} />
               <Route path="/unMessage/:id/:userId" component={GetUnMessage} />
               <Route path="/affichUnMessage" component={AffichUnMessage} />

@@ -3,17 +3,15 @@ import axios from "axios";
 
 function AxAllUsers(id, idtoken) {
   var axios = require("axios");
-  var data = {
-    userId: id,
-  };
+
+  let configUrl = "http://localhost:3001/api/auth" + "?" + "userId" + "=" + id;
   var config = {
-    method: "post",
-    url: "http://localhost:3001/api/auth",
+    method: "get",
+    url: configUrl,
     headers: {
       Authorization: idtoken,
       "Content-Type": "application/json",
     },
-    data: data,
   };
 
   return axios(config);

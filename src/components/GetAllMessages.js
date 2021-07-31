@@ -83,6 +83,10 @@ function GetAllMessages() {
     window.location.href = "/supprUnMessage";
   }
 
+  function affichListUsers() {
+    window.location.href = "/listUsers";
+  }
+
   const [messages, setMessages] = useState([]);
   const GetMessages = (idls, idtoken) => {
     AxAllMessages(idls, idtoken)
@@ -100,64 +104,55 @@ function GetAllMessages() {
   }, []);
   console.log("messages[0]  ", messages[0]);
   return (
-    <div className="grp-AllMess-Corps">
-      <p className="grp-AllMess-Ent grp-AllMess-Bonjour">Bonjour {pseudo}</p>
-      <h1 className="grp-AllMess-Ent">Messages</h1>
-      <div className="grp-Onclick-btn">
-        <button onClick={handleClick}>
-          <p className="grp-p-btn">Création d'un nouveau message</p>
-        </button>
-      </div>
-      <div>
-        <ul className="grp-AllMess-list">
-          {messages.map(
-            ({
-              id,
-              title,
-              content,
-              objet,
-              imgUrl,
-              userId,
-              createdAt,
-              updatedAt,
-              user,
-            }) => (
-              <div className="grp-AllMess-bloc" key={id}>
-                <MessageItem
-                  id={id}
-                  title={title}
-                  content={content}
-                  objet={objet}
-                  imgUrl={imgUrl}
-                  userId={userId}
-                  createdAt={createdAt}
-                  updatedAt={updatedAt}
-                  user={user}
-                />
-                <button
-                  className="grp-AllMess-btn"
-                  onClick={() =>
-                    affichMessage(
-                      id,
-                      userId,
-                      title,
-                      content,
-                      objet,
-                      imgUrl,
-                      createdAt,
-                      updatedAt,
-                      user
-                    )
-                  }
-                >
-                  Afficher
-                </button>
-                {/* Affichage bouton conditionner si Admin ou si le créateur du message est le  user connecté */}
-                {(isAdmin || idls == userId) && (
+    <div>
+      {isAdmin && (
+        <div>
+          <button
+            className="grp-AllMess-btn grp-AllMess-btn-Admn"
+            onClick={() => affichListUsers()}
+          >
+            Users Liste
+          </button>
+        </div>
+      )}
+      <div className="grp-AllMess-Corps">
+        <p className="grp-AllMess-Ent grp-AllMess-Bonjour">Bonjour {pseudo}</p>
+        <h1 className="grp-AllMess-Ent">Messages</h1>
+        <div className="grp-Onclick-btn">
+          <button onClick={handleClick}>
+            <p className="grp-p-btn">Création d'un nouveau message</p>
+          </button>
+        </div>
+        <div>
+          <ul className="grp-AllMess-list">
+            {messages.map(
+              ({
+                id,
+                title,
+                content,
+                objet,
+                imgUrl,
+                userId,
+                createdAt,
+                updatedAt,
+                user,
+              }) => (
+                <div className="grp-AllMess-bloc" key={id}>
+                  <MessageItem
+                    id={id}
+                    title={title}
+                    content={content}
+                    objet={objet}
+                    imgUrl={imgUrl}
+                    userId={userId}
+                    createdAt={createdAt}
+                    updatedAt={updatedAt}
+                    user={user}
+                  />
                   <button
-                    className="grp-AllMess-btn grp-AllMess-btn-darkolivegreen"
+                    className="grp-AllMess-btn"
                     onClick={() =>
-                      modifMessage(
+                      affichMessage(
                         id,
                         userId,
                         title,
@@ -170,33 +165,54 @@ function GetAllMessages() {
                       )
                     }
                   >
-                    Modifier
+                    Afficher
                   </button>
-                )}
-                {(isAdmin || idls == userId) && (
-                  <button
-                    className="grp-AllMess-btn grp-AllMess-btn-rouge"
-                    onClick={() =>
-                      supprMessage(
-                        id,
-                        userId,
-                        title,
-                        content,
-                        objet,
-                        imgUrl,
-                        createdAt,
-                        updatedAt,
-                        user
-                      )
-                    }
-                  >
-                    Supprimer
-                  </button>
-                )}
-              </div>
-            )
-          )}
-        </ul>
+                  {/* Affichage bouton conditionner si Admin ou si le créateur du message est le  user connecté */}
+                  {(isAdmin || idls == userId) && (
+                    <button
+                      className="grp-AllMess-btn grp-AllMess-btn-darkolivegreen"
+                      onClick={() =>
+                        modifMessage(
+                          id,
+                          userId,
+                          title,
+                          content,
+                          objet,
+                          imgUrl,
+                          createdAt,
+                          updatedAt,
+                          user
+                        )
+                      }
+                    >
+                      Modifier
+                    </button>
+                  )}
+                  {(isAdmin || idls == userId) && (
+                    <button
+                      className="grp-AllMess-btn grp-AllMess-btn-rouge"
+                      onClick={() =>
+                        supprMessage(
+                          id,
+                          userId,
+                          title,
+                          content,
+                          objet,
+                          imgUrl,
+                          createdAt,
+                          updatedAt,
+                          user
+                        )
+                      }
+                    >
+                      Supprimer
+                    </button>
+                  )}
+                </div>
+              )
+            )}
+          </ul>
+        </div>
       </div>
     </div>
   );
