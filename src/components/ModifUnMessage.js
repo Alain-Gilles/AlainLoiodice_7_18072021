@@ -102,7 +102,10 @@ function ModifUnMessage() {
           <option value="voyages">voyages</option>
         </select>
 
-        <button className="CreatMessmyButton" type="submit">
+        <button
+          className="CreatMessmyButton CreatMessmyButtonColordarkolivegreen"
+          type="submit"
+        >
           Modifier
         </button>
         {/* <button
@@ -112,7 +115,7 @@ function ModifUnMessage() {
           Reset
         </button> */}
         <button
-          className="CreatMessmyButton CreatMessmyButtonColor"
+          className="CreatMessmyButton CreatMessmyButtonColorred"
           type="button"
           onClick={abandon}
         >

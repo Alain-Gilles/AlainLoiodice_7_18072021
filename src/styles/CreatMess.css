@@ -60,3 +60,15 @@ input[type="password"] { */
 .CreatMessmyButtonColor {
   background-color: steelblue;
 }
+
+.CreatMessmyButtonColordarkolivegreen {
+  background-color: darkolivegreen;
+}
+
+.CreatMessmyButtonColorred {
+  background-color: red;
+}
+
+.CreatMessmyButtonColorgreen {
+  background-color: green;
+}

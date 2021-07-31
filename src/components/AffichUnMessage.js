@@ -2,9 +2,9 @@ import React from "react";
 //
 import AxAllOneMessComments from "../services/AxAllOneMessComments";
 import { useState, useEffect } from "react";
-//
 import MessageItem from "./MessageItem";
 import CommentItem from "./CommentItem";
+import AxSupprComment from "../services/AxSupprComment";
 import "../styles/AffichAllMessages.css";
 
 function AffichUnMessage() {
@@ -23,6 +23,18 @@ function AffichUnMessage() {
     message = localStorage.getItem("UnMessage");
     message = JSON.parse(message);
     idmess = message.id;
+  }
+
+  function supprComm(id) {
+    AxSupprComment(idls, idtoken, id)
+      .then((response) => {
+        window.location.href = "/affichUnMessage";
+      })
+      .catch((error) => {
+        const errorData = error && error.response && error.response.data;
+        setErrMessage(errorData.message);
+        console.log(errorData);
+      });
   }
 
   const [comments, setComments] = useState([]);
@@ -65,10 +77,10 @@ function AffichUnMessage() {
               user={message.user}
             />
             <button
-              className="grp-AllMess-btn grp-AllMessComm-btn"
+              className="grp-AllMess-btn grp-AllMessComm-btn "
               onClick={handleClick2}
             >
-              <p>Création d'un commentaire</p>
+              <p>Créat comment</p>
             </button>
           </div>
         </ul>
@@ -90,6 +102,27 @@ function AffichUnMessage() {
                   updatedAt={updatedAt}
                   user={user}
                 />
+
+                {(isAdmin || idls == userId) && (
+                  // <button
+                  //   className="grp-AllMess-btn grp-AllMess-btn-rouge"
+                  //   onClick={() => supprUnComment(id, content)}
+                  // >
+                  <button
+                    className="grp-AllMess-btn grp-AllMess-btn-rouge"
+                    onClick={() => {
+                      if (
+                        window.confirm(
+                          "Etes vous certain de vouloir supprimer ce commentaire ?"
+                        )
+                      ) {
+                        supprComm(id);
+                      }
+                    }}
+                  >
+                    Supprimer
+                  </button>
+                )}
               </div>
             )
           )}
@@ -98,17 +131,15 @@ function AffichUnMessage() {
     </div>
   );
 }
-
+// Afficher tous les messages
 function handleClick(e) {
   e.preventDefault();
-  console.log("Le lien a été cliqué.");
   window.location.href = "/allMessages";
 }
 // Création d'un commentaire
 function handleClick2(e) {
   e.preventDefault();
-  console.log("Le lien a été cliqué.");
-  window.location.href = "/allMessages";
+  window.location.href = "/creatComment";
 }
 
 export default AffichUnMessage;

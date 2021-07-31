@@ -52,6 +52,14 @@
   margin-right: 30px;
 }
 
+.grp-AllMess-btn-rouge {
+  background-color: red;
+}
+
+.grp-AllMess-btn-darkolivegreen {
+  background-color: darkolivegreen;
+}
+
 .grp-AllMessComment {
   display: flex;
   justify-content: center;

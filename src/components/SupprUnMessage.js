@@ -50,7 +50,7 @@ function SupprUnMessage() {
               user={message._user}
             />
             <button
-              className="grp-AllMess-btn"
+              className="grp-AllMess-btn grp-AllMess-btn-rouge"
               onClick={() => {
                 if (
                   window.confirm(

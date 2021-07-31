@@ -155,7 +155,7 @@ function GetAllMessages() {
                 {/* Affichage bouton conditionner si Admin ou si le créateur du message est le  user connecté */}
                 {(isAdmin || idls == userId) && (
                   <button
-                    className="grp-AllMess-btn"
+                    className="grp-AllMess-btn grp-AllMess-btn-darkolivegreen"
                     onClick={() =>
                       modifMessage(
                         id,
@@ -175,7 +175,7 @@ function GetAllMessages() {
                 )}
                 {(isAdmin || idls == userId) && (
                   <button
-                    className="grp-AllMess-btn"
+                    className="grp-AllMess-btn grp-AllMess-btn-rouge"
                     onClick={() =>
                       supprMessage(
                         id,

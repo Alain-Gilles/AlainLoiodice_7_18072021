@@ -116,17 +116,20 @@ function CreatMess(props) {
           <option value="voyages">voyages</option>
         </select>
 
-        <button className="CreatMessmyButton" type="submit">
+        <button
+          className="CreatMessmyButton CreatMessmyButtonColorgreen"
+          type="submit"
+        >
           Creation
         </button>
         <button
-          className="CreatMessmyButton CreatMessmyButtonColor"
+          className="CreatMessmyButton CreatMessmyButtonColordarkolivegreen"
           type="reset"
         >
           Reset
         </button>
         <button
-          className="CreatMessmyButton CreatMessmyButtonColor"
+          className="CreatMessmyButton CreatMessmyButtonColorred"
           type="button"
           onClick={abandon}
         >
