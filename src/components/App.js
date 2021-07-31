@@ -1,7 +1,6 @@
 import Banner from "./Banner";
 import logo from "../assets/logo5.png";
 import SignupForm from "./SignupForm";
-import About from "./About";
 import LoginForm from "./LoginForm";
 import GetAllMessages from "./GetAllMessages";
 import CreatMess from "./CreatMess";
@@ -11,6 +10,7 @@ import GetAllUsers from "./GetAllUsers";
 import ModifUnMessage from "./ModifUnMessage";
 import SupprUnMessage from "./SupprUnMessage";
 import CreatComment from "./CreatComment";
+import ModifUnComment from "./ModifUnComment";
 import "../styles/App.css";
 import React from "react";
 import {
@@ -57,12 +57,9 @@ function App() {
               <li>
                 <Link to="/login">Login</Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/allUsers">User List</Link>
-              </li>
-              <li>
-                <Link to={`/about/${name}`}>About</Link>
-              </li>
+              </li> */}
             </ul>
           </nav>
           {/* <Route path="/" render={() => <h1>Welcome!</h1>} /> */}
@@ -91,7 +88,7 @@ function App() {
               <Route path="/modifUnMessage" component={ModifUnMessage} />
               <Route path="/supprUnMessage" component={SupprUnMessage} />
               <Route path="/creatComment" component={CreatComment} />
-              <Route path="/about/:name" component={About1} />
+              <Route path="/modifUnComment" component={ModifUnComment} />
             </>
           ) : (
             <Redirect to="/" />
@@ -101,11 +98,5 @@ function App() {
     </div>
   );
 }
-
-const About1 = ({
-  match: {
-    params: { name },
-  },
-}) => About(name);
 
 export default App;

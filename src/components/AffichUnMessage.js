@@ -37,6 +37,26 @@ function AffichUnMessage() {
       });
   }
 
+  function modifComment(id, userId, content, createdAt, updatedAt, user) {
+    console.log("id :", id);
+    console.log("userId :", userId);
+    console.log("content :", content);
+    console.log("createdAt :", createdAt);
+    console.log("updatedAt :", updatedAt);
+    console.log("user :", user);
+    const modifComm = {
+      _id: id,
+      _userId: userId,
+      _content: content,
+      _createdAt: createdAt,
+      _updatedAt: updatedAt,
+      _user: user,
+    };
+    let modifCommStringify = JSON.stringify(modifComm);
+    localStorage.setItem("ModifUnComment", modifCommStringify);
+    window.location.href = "/modifUnComment";
+  }
+
   const [comments, setComments] = useState([]);
   const GetComments = (idmess, idls, idtoken) => {
     AxAllOneMessComments(idmess, idls, idtoken)
@@ -102,6 +122,24 @@ function AffichUnMessage() {
                   updatedAt={updatedAt}
                   user={user}
                 />
+
+                {(isAdmin || idls == userId) && (
+                  <button
+                    className="grp-AllMess-btn grp-AllMess-btn-darkolivegreen"
+                    onClick={() =>
+                      modifComment(
+                        id,
+                        userId,
+                        content,
+                        createdAt,
+                        updatedAt,
+                        user
+                      )
+                    }
+                  >
+                    Modifier
+                  </button>
+                )}
 
                 {(isAdmin || idls == userId) && (
                   // <button
