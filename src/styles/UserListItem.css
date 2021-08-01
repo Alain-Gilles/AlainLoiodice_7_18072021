@@ -1,0 +1,55 @@
+.grp-UserListItem-bloc {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  background-color: lightgreen;
+  padding: 10px;
+  border: 2px black solid;
+}
+
+.grp-UserListItem-li {
+  text-decoration: none;
+  list-style-type: none;
+}
+
+.grp-UserListItem-Username {
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+.grp-UserListItem-Pseudo {
+  font-weight: bolder;
+}
+
+.grp-UserListItem-btn {
+  border: 0;
+  background-color: green;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 15px;
+  padding: 10px 20px;
+  text-decoration: none;
+  margin-top: 0px;
+  margin-right: 30px;
+}
+
+.grp-UserListItem-btn-red {
+  background-color: red;
+}
+
+.grp-UserListItem-btn-green {
+  background-color: green;
+}
+
+.grp-UserListItem-btn-Abandon {
+  margin-bottom: 30px;
+  margin-left: 40px;
+}
+
+.grp-UserListItem-list {
+  list-style-type: none;
+  padding: 32px;
+  width: 100%;
+  background-color: lightyellow;
+  color: black;
+}

@@ -2,14 +2,14 @@ import AxAllUsers from "../services/AxAllUsers";
 import React from "react";
 import { useState, useEffect } from "react";
 import UserItem from "./UserItem";
-//import "../styles/AffichAllMessages.css";
+import "../styles/UserListItem.css";
 
 function ListUsers() {
   const [errMessage, setErrMessage] = React.useState("");
   const connect = JSON.parse(localStorage.getItem("Connect"));
   const idls = connect.id;
-  const isAdmin = connect.ad;
-  const pseudo = connect.ps;
+  // const isAdmin = connect.ad;
+  // const pseudo = connect.ps;
 
   const idtokenls = localStorage.getItem("tokenUser");
   const idtoken = "Bearer" + " " + idtokenls;
@@ -32,10 +32,10 @@ function ListUsers() {
   console.log("users[0]  ", users[0]);
   return (
     <div>
-      <ul>
+      <ul className="grp-UserListItem-list">
         {users.map(
           ({ id, username, pseudo, isAdmin, createdAt, updatedAt }) => (
-            <div key={id}>
+            <div className="grp-UserListItem-bloc" key={id}>
               <UserItem
                 id={id}
                 username={username}
@@ -44,13 +44,39 @@ function ListUsers() {
                 createdAt={createdAt}
                 updatedAt={updatedAt}
               />
+              <button
+                className="grp-UserListItem-btn grp-UserListItem-btn-red"
+                onClick={() => {
+                  if (
+                    window.confirm(
+                      "Etes vous certain de vouloir supprimer cet utilisateur? Valider par OK, sinon annuler."
+                    )
+                  ) {
+                    //
+                    if (
+                      window.confirm(
+                        "Veuillez confirmer s'il vous plait ? Attention si Ok suppression de l'utilisateur."
+                      )
+                    ) {
+                      // supprComm(id);
+                    }
+                    //
+                  }
+                }}
+              >
+                Supprimer
+              </button>
+              <button
+                className="grp-UserListItem-btn grp-UserListItem-btn-green"
+                type="button"
+                onClick={abandon}
+              >
+                Abandon
+              </button>
             </div>
           )
         )}
       </ul>
-      <button type="button" onClick={abandon}>
-        Abandon
-      </button>
     </div>
   );
 }
