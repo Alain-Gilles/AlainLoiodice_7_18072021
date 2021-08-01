@@ -1,4 +1,5 @@
 import AxAllUsers from "../services/AxAllUsers";
+import AxSupprUser from "../services/AxSupprUser";
 import React from "react";
 import { useState, useEffect } from "react";
 import UserItem from "./UserItem";
@@ -13,6 +14,18 @@ function ListUsers() {
 
   const idtokenls = localStorage.getItem("tokenUser");
   const idtoken = "Bearer" + " " + idtokenls;
+
+  function supprUser(id) {
+    AxSupprUser(idls, idtoken, id)
+      .then((response) => {
+        window.location.href = "/listUsers";
+      })
+      .catch((error) => {
+        const errorData = error && error.response && error.response.data;
+        setErrMessage(errorData.message);
+        console.log(errorData);
+      });
+  }
 
   const [users, setUsers] = useState([]);
   const GetUsers = (idls, idtoken) => {
@@ -58,7 +71,7 @@ function ListUsers() {
                         "Veuillez confirmer s'il vous plait ? Attention si Ok suppression de l'utilisateur."
                       )
                     ) {
-                      // supprComm(id);
+                      supprUser(id);
                     }
                     //
                   }
