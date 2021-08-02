@@ -62,13 +62,13 @@ function ListUsers() {
                 onClick={() => {
                   if (
                     window.confirm(
-                      "Etes vous certain de vouloir supprimer cet utilisateur? Valider par OK, sinon annuler."
+                      `Etes vous certain de vouloir supprimer cet utilisateur ${username} ? Valider par OK, sinon annuler.`
                     )
                   ) {
                     //
                     if (
                       window.confirm(
-                        "Veuillez confirmer s'il vous plait ? Attention si Ok suppression de l'utilisateur."
+                        `Veuillez confirmer s'il vous plait ? Attention si Ok suppression de l'utilisateur ${username} .`
                       )
                     ) {
                       supprUser(id);
