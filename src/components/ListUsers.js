@@ -4,8 +4,10 @@ import React from "react";
 import { useState, useEffect } from "react";
 import UserItem from "./UserItem";
 import "../styles/UserListItem.css";
+import VerifConnect from "../services/VerifConnect";
 
 function ListUsers() {
+  VerifConnect();
   const [errMessage, setErrMessage] = React.useState("");
   const connect = JSON.parse(localStorage.getItem("Connect"));
   const idls = connect.id;

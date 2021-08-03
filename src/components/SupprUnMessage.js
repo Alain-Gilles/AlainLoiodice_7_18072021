@@ -2,10 +2,12 @@ import React from "react";
 import MessageItem from "./MessageItem";
 import "../styles/AffichAllMessages.css";
 import AxSupprMess from "../services/AxSupprMess";
+import VerifConnect from "../services/VerifConnect";
 
 //import AxModifMess from "../services/AxModifMess";
 
 function SupprUnMessage() {
+  VerifConnect();
   const connect = JSON.parse(localStorage.getItem("Connect"));
   const idls = connect.id;
   const isAdmin = connect.ad;

@@ -6,12 +6,13 @@ import GetAllMessages from "./GetAllMessages";
 import CreatMess from "./CreatMess";
 import AffichUnMessage from "./AffichUnMessage";
 import GetUnMessage from "./GetUnMessage";
-import GetAllUsers from "./GetAllUsers";
+// import GetAllUsers from "./GetAllUsers";
 import ModifUnMessage from "./ModifUnMessage";
 import SupprUnMessage from "./SupprUnMessage";
 import CreatComment from "./CreatComment";
 import ModifUnComment from "./ModifUnComment";
 import ListUsers from "./ListUsers";
+import DeconnectForm from "./DeconnectForm";
 import "../styles/App.css";
 import React from "react";
 import {
@@ -62,6 +63,11 @@ function App() {
                   Login
                 </Link>
               </li>
+              <li className="men-li-App">
+                <Link className="men-link-App" to="/deconnect">
+                  Deconnexion
+                </Link>
+              </li>
               {/* <li>
                 <Link to="/allUsers">User List</Link>
               </li> */}
@@ -83,9 +89,15 @@ function App() {
             render={(props) => <LoginForm {...props} validAuth={false} />}
           />
 
+          {/* <Route path="/deconnect" component={DeconnectForm} /> */}
+          <Route
+            path="/deconnect"
+            render={(props) => <DeconnectForm {...props} validAuth={false} />}
+          />
+
           {isAuthenticated ? (
             <>
-              <Route path="/allUsers" component={GetAllUsers} />
+              {/* <Route path="/allUsers" component={GetAllUsers} /> */}
               <Route path="/listUsers" component={ListUsers} />
               <Route path="/allMessages" component={GetAllMessages} />
               <Route path="/unMessage/:id/:userId" component={GetUnMessage} />

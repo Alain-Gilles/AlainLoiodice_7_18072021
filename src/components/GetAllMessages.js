@@ -3,8 +3,10 @@ import React from "react";
 import { useState, useEffect } from "react";
 import MessageItem from "./MessageItem";
 import "../styles/AffichAllMessages.css";
+import VerifConnect from "../services/VerifConnect";
 
 function GetAllMessages() {
+  VerifConnect();
   const [errMessage, setErrMessage] = React.useState("");
   const connect = JSON.parse(localStorage.getItem("Connect"));
   const idls = connect.id;

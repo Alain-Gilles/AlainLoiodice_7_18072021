@@ -3,8 +3,10 @@ import "../styles/AffichAllMessages.css";
 import "../styles/CreatMess.css";
 import AxModifComm from "../services/AxModifComm";
 import MessageItem from "./MessageItem";
+import VerifConnect from "../services/VerifConnect";
 
 function ModifUnComment() {
+  VerifConnect();
   const connect = JSON.parse(localStorage.getItem("Connect"));
   const idls = connect.id;
   const isAdmin = connect.ad;

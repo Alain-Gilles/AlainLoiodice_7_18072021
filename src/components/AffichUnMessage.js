@@ -6,8 +6,10 @@ import MessageItem from "./MessageItem";
 import CommentItem from "./CommentItem";
 import AxSupprComment from "../services/AxSupprComment";
 import "../styles/AffichAllMessages.css";
+import VerifConnect from "../services/VerifConnect";
 
 function AffichUnMessage() {
+  VerifConnect();
   const connect = JSON.parse(localStorage.getItem("Connect"));
   const idls = connect.id;
   const isAdmin = connect.ad;

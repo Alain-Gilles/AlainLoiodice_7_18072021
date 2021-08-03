@@ -2,8 +2,10 @@ import React from "react";
 import "../styles/AffichAllMessages.css";
 import "../styles/CreatMess.css";
 import AxModifMess from "../services/AxModifMess";
+import VerifConnect from "../services/VerifConnect";
 
 function ModifUnMessage() {
+  VerifConnect();
   const connect = JSON.parse(localStorage.getItem("Connect"));
   const idls = connect.id;
   const isAdmin = connect.ad;

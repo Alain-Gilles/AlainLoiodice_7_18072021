@@ -1,8 +1,10 @@
 import "../styles/CreatMess.css";
 import React from "react";
 import AxCreatMess from "../services/AxCreatMess";
+import VerifConnect from "../services/VerifConnect";
 
 function CreatMess(props) {
+  VerifConnect();
   const titleEl = React.useRef(null);
   const contentEl = React.useRef(null);
   const objetEl = React.useRef(null);

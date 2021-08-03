@@ -1,6 +1,8 @@
 import AxUnMessage from "../services/AxUnMessage";
 import React from "react";
+import VerifConnect from "../services/VerifConnect";
 function GetUnMessage(props) {
+  VerifConnect();
   let id = props.match.params.id;
   let userId = props.match.params.userId;
   const [errMessage, setErrMessage] = React.useState("");

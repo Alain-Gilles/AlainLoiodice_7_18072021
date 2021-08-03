@@ -1,7 +1,9 @@
 import React from "react";
 import AxAllUsers from "../services/AxAllUsers";
+import VerifConnect from "../services/VerifConnect";
 
 function GetAllUsers() {
+  VerifConnect();
   const connect = JSON.parse(localStorage.getItem("Connect"));
   const idls = connect.id;
   const isAdmin = connect.ad;

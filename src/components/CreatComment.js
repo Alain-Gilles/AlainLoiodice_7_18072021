@@ -3,8 +3,10 @@ import "../styles/CreatMess.css";
 import React from "react";
 import AxCreatComm from "../services/AxCreatComm";
 import MessageItem from "./MessageItem";
+import VerifConnect from "../services/VerifConnect";
 
 function CreatComment(props) {
+  VerifConnect();
   const contentEl = React.useRef(null);
 
   const connect = JSON.parse(localStorage.getItem("Connect"));
