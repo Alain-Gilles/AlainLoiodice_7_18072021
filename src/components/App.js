@@ -22,23 +22,18 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
+import VerifConnect from "../services/VerifConnect";
 
 function App() {
+  let connectUser = false;
+  if ("tokenUser" in localStorage) {
+    connectUser = true;
+  }
   const name = "John Doe !";
   const trtOk = false;
   let isAuthenticated = true;
 
   const [validAuth, SetValidAuth] = React.useState(false);
-
-  // let lc = localStorage.getItem("AccMe");
-  // console.log("lc  ", lc);
-  // let isAuthenticated = false;
-  // if (lc == "true") {
-  //   isAuthenticated = true;
-  // } else {
-  //   isAuthenticated = false;
-  // }
-  // console.log("isAuthenticated", isAuthenticated);
 
   return (
     <div className="bloc-App">
@@ -53,16 +48,20 @@ function App() {
         <div>
           <nav>
             <ul className="men-App">
-              <li className="men-li-App">
-                <Link className="men-link-App" to="/">
-                  Signup
-                </Link>
-              </li>
-              <li className="men-li-App">
-                <Link className="men-link-App" to="/login">
-                  Login
-                </Link>
-              </li>
+              {!connectUser && (
+                <li className="men-li-App">
+                  <Link className="men-link-App" to="/">
+                    Signup
+                  </Link>
+                </li>
+              )}
+              {!connectUser && (
+                <li className="men-li-App">
+                  <Link className="men-link-App" to="/login">
+                    Login
+                  </Link>
+                </li>
+              )}
               <li className="men-li-App">
                 <Link className="men-link-App" to="/deconnect">
                   Deconnexion
