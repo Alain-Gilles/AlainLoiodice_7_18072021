@@ -95,7 +95,7 @@ function GetAllMessages() {
       })
       .catch((error) => {
         const errorData = error && error.response && error.response.data;
-        setErrMessage(errorData.message);
+        setErrMessage(errorData?.message);
         console.log(errorData);
       });
   };
